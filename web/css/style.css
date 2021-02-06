@@ -1,0 +1,12 @@
+.resizable{
+    overflow: scroll;
+    resize: horizontal;
+}
+
+.selected{
+    background-color: yellowgreen;
+}
+
+.selected :hover{
+    background-color: yellow;
+}

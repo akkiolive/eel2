@@ -1,23 +1,98 @@
 <html>
 <head>
     <meta charset="UTF-8">
+
+    <!-- JQuery-->
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    
+    
+    <!-- Semantic UI  -->
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.3.3/semantic.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.3.3/semantic.min.js"></script>
+    
+    
+
+    <!-- user style, script -->
+    <link rel="stylesheet" href="css/style.css">
+    <script src="js/script.js"></script>
+
+
     <title>Eel</title>
 </head>
 <body>
+    <!-- eel -->
     <script type="text/javascript" src="/eel.js"></script>
+    <script src="js/communicator.js"></script>
+    <script src="js/onbeforestarteel.js"></script>
+
+
+    <!-- refresh alert -->
+    <script>
+        window.addEventListener('beforeunload', (event) => {
+            // Cancel the event as stated by the standard.
+            event.preventDefault();
+            // Chrome requires returnValue to be set.
+            event.returnValue = '';
+        });
+      </script>
     
+    <div id="wrapper" class="ui">
+        <div id="header">
+            <p>hello</p>
+            <div id="controller" class="ui four grid">
+                <div class="ui column header">
+                    <i class="arrow right icon"></i>
+                    <div class="content">
+                        Next
+                        <div class="sub header">2020-01-07-10:20:08</div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
 
 
-    <div id="target"></div>
-    
-    <script type="text/javascript">
-        eel.expose(js_function)
-        function js_function(str) {
-            document.getElementById("target").innerText = str
-        }
-    </script>
+        <div id="main_area" class="ui three column relaxed grid">
+        
+            <div class="column resizable">
+                <div  class="ui search"></div>
+                <div class="ui input">
+                    <input id="signal_search_box" type="text" placeholder="Search...">
+                </div>
+
+                <table id="table_signal_list_all" class="ui selectable table">
+                    <tbody>
+                        <tr><td>hoge</td></tr>
+                        <tr><td>hoge</td></tr>
+                    </tbody>
+                </table>
+
+            </div>
+
+            <div id="graph_area" class="column">hogee</div>
+
+            <div id="info_area" class="column">hogee</div>
+        </div>
+
+        <div id="target"></div>
+        
+        <script type="text/javascript">
+            eel.expose(js_function)
+            function js_function(str) {
+                document.getElementById("target").innerText = str
+            }
+        </script>
 
 
+
+        <div id="signal_selector">
+
+
+        </div>
+
+    </div>
 
 </body>
 </html>
