@@ -1,6 +1,9 @@
 signal_list_all = [
     "TOKYO_2020",
-    "ROMA_2018"
+    "ROMA_2018",
+    "TOKO_2020",
+    "TOYO_2020",
+    "OKYO_2020",
 ]
 
 signal_list_all_selected = []
@@ -50,40 +53,63 @@ function refresh_table_signal_plot_all(){
     //add event for multi selection
     for(row of tbody.rows){
         row.onclick = function(e){
-            //set all non-selected if ctrl not pressed
-            if (!key_pressed.Control){
-              _tbody = e.target.parentElement.parentElement
-              for(_row of _tbody.rows){
-                _row.classList.remove("selected")
-                console.log(_row)
-              }
-            }
-
-            //set style of clicked row
+            let _tbody = e.target.parentElement.parentElement
             target_row = e.target
-            index = target_row.parentElement.rowIndex
-            index_clicked = index
-            signal_list_all_selected[index] = !signal_list_all_selected[index]
-            if(signal_list_all_selected[index]){
-                target_row.classList.add("selected")
-            }
-            else{
-                target_row.classList.remove("selected")
-            }
+            index_clicked = target_row.parentElement.rowIndex
+
 
             //if shift pressed
-            if (key_pressed.shift){
-              if(signal_list_all_lase_selected_index){
-
+            if (key_pressed.Shift){
+              if(signal_list_all_lase_selected_index != null){
+                let last_idx = signal_list_all_lase_selected_index
+                let click_idx = index_clicked
+                if(last_idx < click_idx){
+                  start_idx = last_idx
+                  end_idx = click_idx
+                }
+                else{
+                  start_idx = click_idx
+                  end_idx = last_idx
+                }
+                for (let i=start_idx; i<=end_idx; i++){
+                  signal_list_all_selected[i] = true
+                  _tbody.rows[i].cells[0].classList.add("selected")
+                }
               }
             }
-            //else if ctrl pressed
-            else if (key_pressed.ctrl){
-
+            else{
+              //set non-select if ctrl not pressed
+              if (!key_pressed.Control){
+                for (let idx in signal_list_all_selected){
+                  if (idx != index_clicked){
+                    signal_list_all_selected[idx] = false
+                  }
+                }
+                for (let idx in signal_list_all_selected){
+                  if (signal_list_all_selected[idx]){
+                    _tbody.rows[idx].cells[0].classList.add("selected")
+                  }
+                  else{
+                    _tbody.rows[idx].cells[0].classList.remove("selected")
+                  }
+                }
+                
+              }
+              //set style of clicked row
+              signal_list_all_selected[index_clicked] = !signal_list_all_selected[index_clicked]
+              if(signal_list_all_selected[index_clicked]){
+                target_row.classList.add("selected")
+              }
+              else{
+                target_row.classList.remove("selected")
+              }
             }
+    
+
 
             signal_list_all_lase_selected_index = index_clicked
-            
+            console.log(signal_list_all_selected)
+
         }
     }
 

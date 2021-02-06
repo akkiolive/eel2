@@ -40,6 +40,33 @@ com.signal_list_all = [
 com.signal_list_all.append("asdfadfjslkfjaldjas;lkja;lsdjkljd")
 
 
+#BOKEH
+
+# 折れ線グラフをhtml出力する
+from bokeh.plotting import figure, output_file, show, save
+
+# データの作成
+x = [1, 2, 3, 4, 5]
+y = [6, 7, 2, 4, 5]
+
+# 出力HTMLファイルパスを指定
+output_file("web/plot.html")
+
+
+# タイトルと軸ラベルを指定したfigureを定義
+p = figure(title = "simple line example", x_axis_label = "x", y_axis_label = "y", width = 1000, height = 150)
+
+# プロットに判例と線の暑さを指定したrenderer(今回は折れ線グラフ)を追加
+p.line(x, y, legend = "Temp", line_width = 2)
+
+# 結果を描画
+save(p)
+
+
+#END BOKEH
+
+
+
 
 #call js function
 eel.onbeforestarteel()

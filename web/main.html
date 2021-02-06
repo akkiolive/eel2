@@ -12,8 +12,16 @@
     <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.3.3/semantic.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.3.3/semantic.min.js"></script>
     
+    <!-- Google charts-->
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
     
+    <!-- D3.js -->
+    <script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>
 
+    <!-- Chart.js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.min.js" integrity="sha512-d9xgZrVZpmmQlfonhQUvTR7lMPtO7NkZMkA0ABN3PHCbKA5nqylQ/yWlFAyY6hYgdF1Qh6nYiuADWwKB4C2WSw==" crossorigin="anonymous"></script>
+    
+    
     <!-- user style, script -->
     <link rel="stylesheet" href="css/style.css">
     <script src="js/script.js"></script>
@@ -42,7 +50,7 @@
         <div id="header">
             <p>hello</p>
             <div id="controller" class="ui four grid">
-                <div class="ui column header">
+                <div class="ui two column header">
                     <i class="arrow right icon"></i>
                     <div class="content">
                         Next
@@ -56,8 +64,7 @@
 
         <div id="main_area" class="ui three column relaxed grid">
         
-            <div class="column resizable">
-                <div  class="ui search"></div>
+            <div class="two wide column resizable">
                 <div class="ui input">
                     <input id="signal_search_box" type="text" placeholder="Search...">
                 </div>
@@ -71,9 +78,16 @@
 
             </div>
 
-            <div id="graph_area" class="column">hogee</div>
+            <div id="graph_area" class="twelve wide column resizable">
+                <iframe src="plot.html" frameborder="0" width="1200" height="3000"></iframe>
+                <!--
+                <div id="chart_div"></div>
+                <script src="js/bokeh_plot.js"></script>
+                -->
 
-            <div id="info_area" class="column">hogee</div>
+            </div>
+
+            <div id="info_area" class="two wide column">hogee</div>
         </div>
 
         <div id="target"></div>
